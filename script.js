@@ -111,3 +111,27 @@ function musicTimeFormatter(sec, opt) {
         return Math.floor(sec % 60).toString().padStart(2, "0")
     }
 }
+
+// music progress bar
+
+musicProgressBar.addEventListener("click", (e) => {
+    const { offsetX } = e
+    let progressBarWidth;
+
+    if (e.target == e.currentTarget) {
+        progressBarWidth = e.target.clientWidth;
+    } else {
+        progressBarWidth = e.target.offsetParent.clientWidth;
+    }
+
+    // Calculate percentage of progress bar clicked
+    progressBarCal = Math.floor((offsetX / progressBarWidth) * 100);
+
+    // Update progress bar visual
+    musicProgress.style.width = `${progressBarCal}%`;
+    musicProgressDot.style.left = `${progressBarCal}%`;
+
+    // Set the current time based on percentage of total duration
+    const { duration } = music;
+    music.currentTime = (offsetX / progressBarWidth) * duration;
+});

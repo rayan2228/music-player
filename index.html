@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Modern Music Player</title>
   </head>
+
   <body>
     <div class="music-player-container">
       <div class="player-header">
@@ -46,10 +47,12 @@
           <div class="progress-dot"></div>
         </div>
         <div class="time-stamps">
-          <div class="current-time">1:23</div>
-          <div class="total-time">3:45</div>
+          <div class="current-time">0:00</div>
+          <div class="total-time">0:00</div>
         </div>
       </div>
+
+      <audio src="./music/music1.mp3"></audio>
 
       <div class="player-controls">
         <button class="control-button">
@@ -61,20 +64,20 @@
             <path d="M19 4l-7 8 7 8V4zM12 4l-7 8 7 8V4z"></path>
           </svg>
         </button>
-        <button class="control-button">
+        <button class="control-button prev">
           <svg class="icon" viewBox="0 0 24 24">
             <path d="M19 20L9 12l10-8v16z"></path>
           </svg>
         </button>
         <button class="control-button play-pause">
-          <svg class="icon" viewBox="0 0 24 24">
+          <svg class="icon play-icon" viewBox="0 0 24 24">
             <path d="M5 3l14 9-14 9V3z"></path>
           </svg>
-          <!-- <svg class="icon" viewBox="0 0 24 24">
+          <svg class="icon pause-icon" viewBox="0 0 24 24">
             <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
-          </svg> -->
+          </svg>
         </button>
-        <button class="control-button">
+        <button class="control-button next">
           <svg class="icon" viewBox="0 0 24 24">
             <path d="M5 4l10 8-10 8V4z"></path>
           </svg>
@@ -140,5 +143,6 @@
         </div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

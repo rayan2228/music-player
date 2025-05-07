@@ -87,3 +87,27 @@ playNext.addEventListener("click", () => {
     updateMusicDetails(songs[songNumber])
     playMusic()
 })
+
+// music time update
+music.addEventListener("timeupdate", (e) => {
+    const { currentTime, duration } = e.target
+    const currentTimeInMin = musicTimeFormatter(currentTime, "/")
+    const currentTimeInSec = musicTimeFormatter(currentTime, "%")
+    if (duration) {
+        const durationInMin = musicTimeFormatter(duration, "/")
+        const durationInSec = musicTimeFormatter(duration, "%")
+        musicTotalTime.textContent = `${durationInMin}:${durationInSec}`
+    }
+    musicCurrentTime.textContent = `${currentTimeInMin}:${currentTimeInSec}`
+    progressBarCal = (currentTime / duration) * 100
+    musicProgress.style.width = `${progressBarCal}%`
+    musicProgressDot.style.left = `${progressBarCal}%`
+})
+
+function musicTimeFormatter(sec, opt) {
+    if (opt == "/") {
+        return Math.floor(sec / 60)
+    } else if (opt == "%") {
+        return Math.floor(sec % 60).toString().padStart(2, "0")
+    }
+}

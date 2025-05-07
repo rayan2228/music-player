@@ -36,3 +36,41 @@ let songs = [
         src: './music/music4.mp3'
     }
 ]
+
+// music variables
+let isPlaying = false
+let songNumber = 0
+let progressBarCal = 0
+
+// play,pause music & update the ui
+function playMusic() {
+    isPlaying = true
+    music.play()
+    updatePlayPauseIcon()
+}
+
+function pauseMusic() {
+    isPlaying = false
+    music.pause()
+    updatePlayPauseIcon()
+}
+
+function updatePlayPauseIcon() {
+    playIcon.style.display = isPlaying ? "none" : "block"
+    pauseIcon.style.display = isPlaying ? "block" : "none"
+    if (isPlaying) {
+        musicAlbumArt.classList.add("rotate-animation")
+    } else {
+        musicAlbumArt.classList.remove("rotate-animation")
+    }
+}
+
+function updateMusicDetails(song) {
+    songTitle.textContent = song.title
+    artistName.textContent = song.artist
+    music.src = song.src
+}
+
+updateMusicDetails(songs[songNumber])
+
+playBtn.addEventListener("click", () => isPlaying ? pauseMusic() : playMusic())

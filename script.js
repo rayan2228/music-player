@@ -74,3 +74,16 @@ function updateMusicDetails(song) {
 updateMusicDetails(songs[songNumber])
 
 playBtn.addEventListener("click", () => isPlaying ? pauseMusic() : playMusic())
+
+// play next & prev music
+playPrev.addEventListener("click", () => {
+    songNumber = (songNumber - 1 + songs.length) % songs.length
+    updateMusicDetails(songs[songNumber])
+    playMusic()
+})
+
+playNext.addEventListener("click", () => {
+    songNumber = (songNumber + 1) % songs.length
+    updateMusicDetails(songs[songNumber])
+    playMusic()
+})
